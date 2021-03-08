@@ -114,7 +114,7 @@ When the system boots, you could find something like the following via the seria
 [0005.816] I> [2]: "JetPack 4.2 smart_detector"
 [0005.816] I> Enter choice:
 ```
-You can select the kernel everytime or you could update the default by [editing extlinux.conf](#edit-extlinux.conf)
+You can select the kernel everytime or you could update the default by [editing extlinux.conf](#edit-extlinuxconf)
 
 <br />
 
