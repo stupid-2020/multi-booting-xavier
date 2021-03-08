@@ -1,0 +1,54 @@
+TIMEOUT 30
+DEFAULT primary
+
+MENU TITLE L4T boot options
+
+LABEL primary
+      MENU LABEL primary kernel (JetPack 4.5.1)
+      LINUX /boot/Image
+      INITRD /boot/initrd
+      APPEND ${cbootargs} quiet root=/dev/mmcblk0p1 rw rootwait rootfstype=ext4 console=ttyTCU0,115200n8 console=tty0 fbcon=map:0 net.ifnames=0 rootfstype=ext4
+
+# When testing a custom kernel, it is recommended that you create a backup of
+# the original kernel and add a new entry to this file so that the device can
+# fallback to the original kernel. To do this:
+#
+# 1, Make a backup of the original kernel
+#      sudo cp /boot/Image /boot/Image.backup
+#
+# 2, Copy your custom kernel into /boot/Image
+#
+# 3, Uncomment below menu setting lines for the original kernel
+#
+# 4, Reboot
+
+# LABEL backup
+#    MENU LABEL backup kernel
+#    LINUX /boot/Image.backup
+#    INITRD /boot/initrd
+#    APPEND ${cbootargs}
+
+LABEL human_pose
+      MENU LABEL JetPack 4.5 human_pose
+      LINUX /boot/jp-4.5.Image
+      INITRD /boot/jp-4.5.initrd
+      APPEND ${cbootargs} quiet root=/dev/nvme0n1p1 rw rootwait rootfstype=ext4 console=ttyTCU0,115200n8 console=tty0 fbcon=map:0 net.ifnames=0 rootfstype=ext4
+
+LABEL jp44_jetbot
+      MENU LABEL JetPack 4.4 jp44_jetbot
+      LINUX /boot/jp-4.4.Image
+      INITRD /boot/jp-4.4.initrd
+      APPEND ${cbootargs} quiet root=/dev/nvme0n1p2 rw rootwait rootfstype=ext4 console=ttyTCU0,115200n8 console=tty0 fbcon=map:0 net.ifnames=0 rootfstype=ext4
+
+LABEL DeepSpeech
+      MENU LABEL JetPack 4.3 DeepSpeech
+      LINUX /boot/jp-4.3.Image
+      INITRD /boot/jp-4.3.initrd
+      APPEND ${cbootargs} quiet root=/dev/nvme0n1p3 rw rootwait rootfstype=ext4 console=ttyTCU0,115200n8 console=tty0 fbcon=map:0 net.ifnames=0 rootfstype=ext4
+
+LABEL smart_detector
+      MENU LABEL JetPack 4.2 smart_detector
+      LINUX /boot/jp-4.2.Image
+      INITRD /boot/jp-4.2.initrd
+      FDT /boot/tegra194-p2888-0001-p2822-0000.jp-42.dtb
+      APPEND ${cbootargs} quiet root=/dev/nvme0n1p4 rw rootwait rootfstype=ext4 console=ttyTCU0,115200n8 console=tty0 fbcon=map:0 net.ifnames=0 rootfstype=ext4

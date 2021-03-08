@@ -1,0 +1,21 @@
+--- init	2019-12-10 15:02:52.000000000 +0800
++++ init_new	2020-12-17 14:57:22.000000000 +0800
+@@ -59,7 +59,8 @@
+ 	chmod 755 /sbin/reboot;
+ fi;
+ 
+-rootdev="$(sed -ne 's/.*\broot=\/dev\/\([abcdefklmnps0-9]*\)\b.*/\1/p' < /proc/cmdline)"
++
++rootdev="$(sed -ne 's/.*\broot=\/dev\/\([abcdefklmnpsv0-9]*\)\b.*/\1/p' < /proc/cmdline)"
+ if [ "${rootdev}" == "" ]; then
+ 	uuid_regex='[0-9a-f]\{8\}-[0-9a-f]\{4\}-[0-9a-f]\{4\}-[0-9a-f]\{4\}-[0-9a-f]\{12\}'
+ 	rootdev="$(sed -ne "s/.*\broot=\(PARTUUID=${uuid_regex}\)\b.*/\1/p" < /proc/cmdline)"
+@@ -85,7 +86,7 @@
+ 		echo "ERROR: ${rootdev} mount fail..." > /dev/kmsg;
+ 		exec /bin/bash;
+ 	fi;
+-elif [[ "${rootdev}" == mmcblk* ]]; then
++elif [[ "${rootdev}" == mmcblk* ]] || [[ "${rootdev}" == nvme0* ]]; then
+ 	if [ ! -e "/dev/${rootdev}" ]; then
+ 		count=0;
+ 		while [ ${count} -lt 50 ]

@@ -1,0 +1,23 @@
+--- _44/init	2020-10-17 03:36:55.000000000 +0800
++++ _out/init	2021-03-05 15:24:26.874349434 +0800
+@@ -59,9 +59,10 @@
+ 	chmod 755 /sbin/reboot;
+ fi;
+ 
+-dev_regex='root=\/dev\/[abcdefklmnps0-9]*'
++dev_regex='root=\/dev\/[abcdefklmnpsv0-9]*'
+ uuid_regex='root=PARTUUID=[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}'
+ rootdev="$(cat /proc/cmdline | grep -oE "\<${dev_regex}|${uuid_regex}\>" | tail -1)"
++
+ if [ "${rootdev}" != "" ]; then
+ 	if [[ "${rootdev}" =~ "PARTUUID" ]]; then
+ 		rootdev=$(echo "${rootdev}" | sed -ne "s/root=\(.*\)/\1/p")
+@@ -87,7 +88,7 @@
+ 		echo "ERROR: ${rootdev} mount fail..." > /dev/kmsg;
+ 		exec /bin/bash;
+ 	fi;
+-elif [[ "${rootdev}" == mmcblk* ]]; then
++elif [[ "${rootdev}" == mmcblk* ]] || [[ "${rootdev}" == nvme0* ]]; then
+ 	if [ ! -e "/dev/${rootdev}" ]; then
+ 		count=0;
+ 		while [ ${count} -lt 50 ]
