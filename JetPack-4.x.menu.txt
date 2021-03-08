@@ -1,0 +1,6 @@
+
+LABEL <JETPACK_LABEL>
+      MENU LABEL JetPack <VERSION> <JETPACK_LABEL>
+      LINUX /boot/jp-<VERSION>.Image
+      INITRD /boot/jp-<VERSION>.initrd
+      APPEND ${cbootargs} quiet root=<ROOTDEV> rw rootwait rootfstype=ext4 console=ttyTCU0,115200n8 console=tty0 fbcon=map:0 net.ifnames=0 rootfstype=ext4
