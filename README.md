@@ -58,7 +58,7 @@ $ sudo cp -ax ./ /tmp/rootfs
 ```
 
 ## Prepare a Backup entry on eMMC
-This allow you to boot Jetson Xavier even there is no SSD installed (or something wrong with the SSD, point to wrong partition or incorrect boot entry).  We should install the latest JetPack version (to support bootin older version).  Follows section [How to Flash](#how-to-flash) to flash `JetPack 4.5.1`
+This allow you to boot Jetson Xavier even there is no SSD installed (or something wrong with the SSD, point to wrong partition or incorrect boot entry).  We should install the latest JetPack version (to support booting older version).  Follows section [How to Flash](#how-to-flash) to flash `JetPack 4.5.1`
 
 After that, `JetPack 4.5.1` should be installed on eMMC and `JetPack 4.4.1` on `/dev/nvme0n1p1`.
 
