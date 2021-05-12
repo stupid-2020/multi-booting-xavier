@@ -16,7 +16,7 @@ This project provides tools to add boot entry to `extlinux.conf` for a partition
 * There is no way to upgrade/replace eMMC (although NVIDIA claims it can last up to [5 years](https://developer.nvidia.com/embedded/faq#jetson-lifetime))
 
 ## Why Multi-booting
-* Try different JetPack versions without changing SSD or reflash.  (For example, `jetpack_44` on `/dev/nvme0n1p1`, `jetpack-4.3` on `/dev/nvme0n1p2`)
+* Try different JetPack versions without changing SSD or reflash.  (For example, `JetPack 4.4` on `/dev/nvme0n1p1`, `JetPack 4.3` on `/dev/nvme0n1p2`)
 * Run different projects with same JetPack version without changing SSD or reflash (Say, `jp44_human_pose` on `/dev/nvme0n1p1`, `jp44_jetbot` on `/dev/nvme0n1p2`)
 * Replace a SSD without reflash (Maybe `john_jetpack_44` on `/dev/nvme0n1p1`, `jane_jetpack_45` on `/dev/nvme0n1p1`)
 * Just for fun
@@ -109,9 +109,9 @@ When the system boots, you could find something like the following via the seria
 [0005.815] I> L4T boot options
 [0005.815] I> [1]: "primary kernel"
 [0005.815] I> [2]: "JetPack 4.5 human_pose"
-[0005.815] I> [2]: "JetPack 4.4 jp44_jetbot"
-[0005.815] I> [2]: "JetPack 4.3 DeepSpeech"
-[0005.816] I> [2]: "JetPack 4.2 smart_detector"
+[0005.815] I> [3]: "JetPack 4.4 jp44_jetbot"
+[0005.815] I> [4]: "JetPack 4.3 DeepSpeech"
+[0005.816] I> [5]: "JetPack 4.2 smart_detector"
 [0005.816] I> Enter choice:
 ```
 You can select the kernel everytime or you could update the default by [editing extlinux.conf](#edit-extlinuxconf)
